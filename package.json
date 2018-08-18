@@ -1,0 +1,24 @@
+{
+    "name": "new-promiseify",
+    "version": "1.0.1",
+    "description": "本工具可以让异步函数promise化，未满足nodejs回调函数规范的异步函数也可以使用。",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lr5420511/new-promiseify.git"
+    },
+    "keywords": [
+        "promise",
+        "async",
+        "callback"
+    ],
+    "author": "lr5420511",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lr5420511/new-promiseify/issues"
+    },
+    "homepage": "https://github.com/lr5420511/new-promiseify#readme"
+}
