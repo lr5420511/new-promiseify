@@ -19,6 +19,16 @@
  * 不能这样调用
  * const [m1, m2, m3] = promiseify([ms1], ms2, [ms3, -1]);
  * 
+ * 新增对处于特殊位置回调函数的异步函数的支持（比如velocityjs库）
+ * const Veloc = promiseify([
+ *     Velocity, function(res) {
+ *         const opts = [].slice.call(arguments, 2),
+ *             last = opts[opts.length - 1];
+ *         last.complete = res;
+ *         return opts;
+ *     }
+ * ]);
+ * 
  */
 
 'use strict';
@@ -33,8 +43,9 @@ const promiseify = module.exports = function() {
         const [naiver, cbi, erri] = cur;
         return function() {
             return new Promise((res, rej) => {
-                const args = [].slice.call(arguments);
-                args.splice(cbi < 0 ? args.length : cbi, 0,
+                let args = [].slice.call(arguments);
+                (typeof cbi == 'function' && (args = cbi(res, rej, ...args))) ||
+                (args.splice(cbi < 0 ? args.length : cbi, 0,
                     function() {
                         const args = [].slice.call(arguments),
                             [err] = args.splice(erri, 1);
@@ -44,7 +55,7 @@ const promiseify = module.exports = function() {
                             (len === 1 ? args[0] : args)
                         );
                     }
-                );
+                ));
                 return naiver.apply(this, args);
             });
         };

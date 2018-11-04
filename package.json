@@ -1,7 +1,7 @@
 {
     "name": "new-promiseify",
-    "version": "1.0.1",
-    "description": "本工具可以让异步函数promise化，未满足nodejs回调函数规范的异步函数也可以使用。",
+    "version": "1.1.1",
+    "description": "本工具可以让异步函数promise化，未满足nodejs回调函数规范的异步函数也可以使用。新增对velocity.js动画库的支持。",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +13,8 @@
     "keywords": [
         "promise",
         "async",
-        "callback"
+        "callback",
+        "velocity"
     ],
     "author": "lr5420511",
     "license": "ISC",
